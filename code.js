@@ -11,6 +11,7 @@ const client = new Client({
     Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
   ],
 });
+
 client.commands = new Collection();
 const commandFiles = fs
   .readdirSync('./commands')
@@ -22,9 +23,9 @@ for (const file of commandFiles) {
   // With the key as the command name and the value as the exported module
   client.commands.set(command.data.name, command);
 }
-client.once('ready', () => {
-  console.log('Ready!');
-});
+// client.once('ready', () => {
+//   console.log('Ready!');
+// });
 
 client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) return;
@@ -42,13 +43,16 @@ client.on('interactionCreate', async interaction => {
     });
   }
 });
-//   const { commandName } = interaction;
+const eventFiles = fs
+  .readdirSync('./events')
+  .filter(file => file.endsWith('.js'));
+for (const file of eventFiles) {
+  const event = require(`./events/${file}`);
+  if (event.once) {
+    client.once(event.name, (...args) => event.execute(...args));
+  } else {
+    client.on(event.name, (...args) => event.execute(...args));
+  }
+}
 
-//   if (commandName === "ping") {
-//     await interaction.reply("Pong!");
-//   } else if (commandName === "beep") {
-//     await interaction.reply("Boop!");
-// Login to Discord with your client's token
 client.login(token);
-
-// fs is Node's native file system module. Collection is a class that extends JavaScript's native Map class, and includes more extensive, useful functionality.
