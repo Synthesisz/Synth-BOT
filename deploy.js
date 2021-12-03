@@ -41,9 +41,6 @@ const rest = new REST({version: '9'}).setToken(token);
 //     .setName("ping")
 //     .setDescription("Replies with pong!"),
 //   new SlashCommandBuilder()
-//     .setName("maikatishea")
-//     .setDescription("Replies with maikatishea"),
-//   new SlashCommandBuilder()
 //     .setName("prune")
 //     .setDescription("Prunes X amount of messages"),
 //   new SlashCommandBuilder()
