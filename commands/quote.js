@@ -38,6 +38,9 @@ module.exports = {
     }
     if (isanime) {
       const response = await getQuote(`quotes/anime?title=${isanime}`);
+      if (response.error) {
+        await interaction.reply(`No quotes from "${isanime}" are available now !`);
+      }
       const randomnumber = Math.floor(Math.random() * 10);
       const animeresult = `**Anime:** ${response[randomnumber].anime}
 **Character:** ${response[randomnumber].character}
