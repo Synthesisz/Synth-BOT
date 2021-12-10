@@ -1,7 +1,7 @@
 const {SlashCommandBuilder} = require('@discordjs/builders');
-const fetch = require('isomorphic-unfetch');
+const {Interaction} = require('discord.js');
 const {getQuote} = require('../utility/fetch-quote');
-const {commandInfo, errorResponse, formatResponse} = require('../utility/format quote');
+const {errorResponse} = require('../utility/format quote');
 
 // module.exports = {
 //   data: new SlashCommandBuilder()
@@ -21,74 +21,28 @@ const {commandInfo, errorResponse, formatResponse} = require('../utility/format 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('quote')
-    .setDescription('Get a random quote or get a specific one by anime/character name.'),
-  //.addStringOption(random => random.setName('random').setDescription('all random'))
-  /**
-   *
-   * @param {SlashCommandBuilder}
-   */
-  //args: true,
+    .setDescription('Get a random quote or get a specific one by anime/character name.')
+    .addStringOption(option =>
+      option.setName('anime').setDescription('Search for quotes by anime name.')
+    ),
 
-  async execute(interaction, args) {
-    /**
-     * !quote random
-     * When only !quote has been passed with no arguments
-     */
-    if (args === 'random' || !args) {
+  async execute(interaction) {
+    const isanime = interaction.options.getString('anime');
+    console.log(isanime);
+    if (!isanime) {
       const response = await getQuote('random');
-      const rng = await `**Anime:** ${response.anime}
+      const rng = `**Anime:** ${response.anime}
 **Character:** ${response.character}
 **Quote:** ${response.quote}`;
       return interaction.reply(rng);
     }
-
-    /**
-     * !quote anime <anime_title>
-     * When the second argument is anime followed by the Anime title
-     */
-    if (args === 'anime') {
-      const animeName = args.slice(1).join(' ');
-      if (!animeName) {
-        return interaction.reply(
-          errorResponse('No anime name is provided. Please provide a valid anime name')
-        );
-      }
-
-      const response = await getQuote(`quotes/anime?title=${animeName}`);
-      const animeresult = await `**Anime:** ${response.anime}
-**Character:** ${response.character}
-**Quote:** ${response.quote}`;
-      if (!response) {
-        return interaction.reply(
-          errorResponse(`No quotes from "${animeName}" are available now !`)
-        );
-      }
-
-      return interaction.reply(formatResponse(animeresult));
+    if (isanime) {
+      const response = await getQuote(`quotes/anime?title=${isanime}`);
+      const randomnumber = Math.floor(Math.random() * 10);
+      const animeresult = `**Anime:** ${response[randomnumber].anime}
+**Character:** ${response[randomnumber].character}
+**Quote:** ${response[randomnumber].quote}`;
+      await interaction.reply(animeresult);
     }
-
-    /**
-     * !quote char <character_name>
-     *  When the second argument is char followed by the Character name
-     */
-    if (args[0] === 'char') {
-      const characterName = args.slice(1).join(' ');
-      if (!characterName) {
-        return interaction.reply(
-          errorResponse('No anime name is provided. Please provide a valid anime name')
-        );
-      }
-
-      const response = await getQuote(`quotes/character?name=${characterName}`);
-
-      if (!response)
-        return interaction.reply(
-          errorResponse(`No quotes from "${characterName}" are available now !`)
-        );
-
-      return interaction.reply(formatResponse(response));
-    }
-
-    return interaction.reply('⚠️ **That is not a valid command!');
   },
 };
