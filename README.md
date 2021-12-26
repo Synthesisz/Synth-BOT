@@ -1,2 +1,2 @@
 # Synth-BOT
-Just a little(for now) personal project of a novice js developer.
+Just a little personal project of a novice js developer.
