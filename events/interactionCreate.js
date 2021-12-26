@@ -1,8 +1,24 @@
+const {Client, CommandInteraction, MessageEmbed} = require('discord.js');
+
 module.exports = {
   name: 'interactionCreate',
-  execute(interaction) {
-    console.log(
-      `${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`
-    );
+  /**
+   * @param {CommandInteraction} interaction
+   * @param {Client} client
+   */
+  async execute(interaction, client) {
+    if (interaction.isCommand()) {
+      const command = client.commands.get(interaction.commandName);
+      if (!command)
+        return (
+          interaction.reply({
+            embeds: [
+              new MessageEmbed().setColor('RED').setDescription('🔴 An error occured while running this command.'),
+            ],
+          }) && client.commands.delete(interaction.commandName)
+        );
+
+      command.execute(interaction, client);
+    }
   },
 };
