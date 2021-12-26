@@ -1,17 +1,10 @@
 const {CommandInteraction, Client, MessageEmbed} = require('discord.js');
 
 module.exports = {
-  name: 'play',
-  description: 'Plays a song.',
+  name: 'dc',
+  description: 'Disconnects the bot',
+  value: 'stop',
   permission: 'SEND_MESSAGES',
-  options: [
-    {
-      name: 'query',
-      description: 'Provide a name or url',
-      type: 'STRING',
-      required: true,
-    },
-  ],
   /**
    * @param {CommandInteraction} interaction
    * @param {Client} client
@@ -19,6 +12,7 @@ module.exports = {
   async execute(interaction, client) {
     const {member, guild, channel} = interaction;
     const VoiceChannel = member.voice.channel;
+    const queue = await client.distube.getQueue(VoiceChannel);
     if (!VoiceChannel)
       return interaction.reply({
         content: 'You must be in a voice channel to be able to use music commands.',
@@ -32,12 +26,11 @@ module.exports = {
       });
 
     try {
-      client.distube.playVoiceChannel(VoiceChannel, interaction.options.getString('query'), {
-        textChannel: channel,
-        member: member,
-      });
+      await queue.stop(VoiceChannel);
       return interaction.reply({
-        embeds: [new MessageEmbed().setColor('#0099ff').setDescription(`☑ **Request received.**`)],
+        embeds: [
+          new MessageEmbed().setColor('#0099ff').setDescription(`⏹ **Stopped The Music & Left The Voice Channel.**`),
+        ],
       });
     } catch (e) {
       const errorEmbed = new MessageEmbed().setColor('RED').setDescription(`🔴 Alert: ${e}`);
