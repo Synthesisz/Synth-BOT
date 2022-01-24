@@ -1,7 +1,7 @@
 # Synth-BOT
 Just a little personal project of a junior js developer and WoW elitist + memer.
 If you want to invite the bot in your server: https://discord.com/api/oauth2/authorize?client_id=914168825111531640&permissions=8&scope=applications.commands%20bot
-
+ 
 Commands list: Booba - 16+ gif of Tyrande Whisperwind
 cringe - cringe wow gif
 destiny - gif from one of Illidan's cinematics
