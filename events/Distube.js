@@ -43,11 +43,11 @@ client.distube
     channel.send({embeds: [new MessageEmbed().setColor('RED').setDescription(`🔴 | An error occured: ${e}`)]});
     console.error(e);
   })
-  .on('empty', channel =>
-    channel.send({
-      embeds: [new MessageEmbed().setColor('RED').setDescription('Voice channel is empty! Leaving the channel...')],
-    })
-  )
+   .on('empty', channel =>
+     channel.send({
+       embeds: [new MessageEmbed().setColor('RED').setDescription('Voice channel is empty! Leaving the channel...')],
+     })
+   )
 
   .on('searchNoResult', message =>
     message.channel.send({
