@@ -9,4 +9,4 @@ prune - clears X number of messages from the chat or you can also specify a targ
 quote - API that returns a quote from a random anime or you can specify the anime/character  
 
 Distube - Music system with youtube, commands are self explanatory(play,pause,resume,skip,loop,shuffle,dc(disconnect))  
-Invite the bot to your server - https://discord.com/api/oauth2/authorize?client_id=914168825111531640&permissions=8&scope=bot%20applications.commands
+Invite the bot to your server - https://discord.com/api/oauth2/authorize?client_id=914168825111531640&permissions=3156992&scope=bot%20applications.commands
