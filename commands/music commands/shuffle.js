@@ -4,7 +4,7 @@ module.exports = {
   name: 'shuffle',
   description: 'Shuffles the queue.',
   value: 'shuffle',
-  permission: 'SEND_MESSAGES',
+  // permission: 'SEND_MESSAGES',
 
   /**
    *

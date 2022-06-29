@@ -3,7 +3,7 @@ const {CommandInteraction, Client, MessageEmbed} = require('discord.js');
 module.exports = {
   name: 'play',
   description: 'Plays a song.',
-  permission: 'SEND_MESSAGES',
+  // permission: 'SEND_MESSAGES',
   options: [
     {
       name: 'query',

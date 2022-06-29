@@ -4,7 +4,7 @@ module.exports = {
   name: 'resume',
   description: 'Resumes the music.',
   value: 'resume',
-  permission: 'SEND_MESSAGES',
+  // permission: 'SEND_MESSAGES',
   /**
    * @param {CommandInteraction} interaction
    * @param {Client} client

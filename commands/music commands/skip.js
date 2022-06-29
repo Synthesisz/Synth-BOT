@@ -4,7 +4,7 @@ module.exports = {
   name: 'skip',
   description: 'Skips the current song.',
   value: 'skip',
-  permission: 'SEND_MESSAGES',
+  // permission: 'SEND_MESSAGES',
   /**
    * @param {CommandInteraction} interaction
    * @param {Client} client

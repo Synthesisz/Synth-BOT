@@ -4,7 +4,7 @@ module.exports = {
   name: 'loop',
   description: 'loops the music.',
   value: 'RepeatMode',
-  permission: 'SEND_MESSAGES',
+  // permission: 'SEND_MESSAGES',
   /**
    * @param {CommandInteraction} interaction
    * @param {Client} client

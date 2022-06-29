@@ -4,7 +4,7 @@ module.exports = {
   name: 'dc',
   description: 'Disconnects the bot',
   value: 'stop',
-  permission: 'SEND_MESSAGES',
+
   /**
    * @param {CommandInteraction} interaction
    * @param {Client} client

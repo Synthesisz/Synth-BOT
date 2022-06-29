@@ -4,7 +4,7 @@ module.exports = {
   name: 'pause',
   description: 'Pauses the music.',
   value: 'pause',
-  permission: 'SEND_MESSAGES',
+  // permission: 'SEND_MESSAGES',
   /**
    * @param {CommandInteraction} interaction
    * @param {Client} client
