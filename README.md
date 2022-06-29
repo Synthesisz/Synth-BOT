@@ -10,5 +10,3 @@ quote - API that returns a quote from a random anime or you can specify the anim
 
 Distube - Music system with youtube, commands are self explanatory(play,pause,resume,skip,loop,shuffle,dc(disconnect))  
 Invite the bot to your server - https://discord.com/api/oauth2/authorize?client_id=914168825111531640&permissions=8&scope=bot%20applications.commands
-IF COMMANDS DONT SHOW UP FOR USERS THAT DONT HAVE THE ADMIN PERMISSIONS YOU HAVE TO GO TO INTEGRATIONS>CLICK ON BOT>ENABLE EVERY SINGLE COMMAND FOR EVERYONE FROM THERE.
-HOPEFULLY WILL BE FIXED SOON.
