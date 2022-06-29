@@ -17,10 +17,10 @@ module.exports = async client => {
 
     if (!command.description) return Table.addRow(command.name, '🔴 FAILED', 'Missing a description.');
 
-    // if (command.permission) {
-    //   if (Perms.includes(command.permission)) command.defaultPermission = false;
-    //   else return Table.addRow(command.name, '🔴 FAILED', 'Permission is invalid.');
-    // }
+    if (command.permission) {
+      if (Perms.includes(command.permission)) command.defaultPermission = false;
+      else return Table.addRow(command.name, '🔴 FAILED', 'Permission is invalid.');
+    }
 
     client.commands.set(command.name, command);
     CommandsArray.push(command);
