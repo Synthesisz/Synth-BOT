@@ -3,7 +3,7 @@ const {getQuote} = require('../../utility/fetch-quote');
 module.exports = {
   name: 'quote',
   description: 'Get a random quote or get a specific one by anime/character name.',
-  permission: 'SEND_MESSAGES',
+  // permission: 'SEND_MESSAGES',
   options: [
     {
       name: 'anime',

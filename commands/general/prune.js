@@ -1,7 +1,7 @@
 module.exports = {
   name: 'prune',
   description: 'Prune up to 99 messages.',
-  permission: 'MANAGE_MESSAGES',
+  // permission: 'MANAGE_MESSAGES',
   options: [
     {
       name: 'amount',
