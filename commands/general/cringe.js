@@ -1,5 +1,3 @@
-const {SlashCommandBuilder} = require('@discordjs/builders');
-
 // module.exports is how you export data in Node.js so that you can require() it in other files.
 module.exports = {
   name: 'cringe',
